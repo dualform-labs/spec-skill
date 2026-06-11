@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Claude Code documentation
+    url: https://docs.claude.com/en/docs/claude-code
+    about: For questions about Claude Code itself (skills, sub-agents, slash commands), see the official docs.
