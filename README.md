@@ -24,6 +24,8 @@
 
 <p align="center">Built and maintained by <a href="https://github.com/dualform-labs">dualform-labs</a> · <a href="#english">English</a> · <a href="#日本語">日本語</a></p>
 
+<p align="center"><sub>See also <a href="https://github.com/dualform-labs/review-audit"><strong>review-audit</strong></a> — a read-only code review &amp; audit skill for Claude Code that refuses to fake a PASS.</sub></p>
+
 ---
 
 ## At a glance
