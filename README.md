@@ -15,7 +15,7 @@
 <p align="center">
   A spec-driven workflow <strong>skill for <a href="https://docs.claude.com/en/docs/claude-code">Claude Code</a></strong>.<br>
   Hand a vague task to an AI and it guesses, drifts, and makes the wrong call. <code>spec</code> front-loads every<br>
-  decision into one file your agent can't misread — so it builds straight through.
+  decision into one file your agent can follow — so it builds straight through.
 </p>
 
 <p align="center">
@@ -47,9 +47,9 @@ Every number here is verifiable straight from the source:
 
 ### The 30-second version
 
-Hand a vague task to an AI agent and you watch the same thing happen: it guesses, it drifts, it silently makes a call you'd have made differently — and you redo half the work. The cost isn't the typing. It's the rework.
+Hand a vague task to an AI agent and you watch the same thing happen: it guesses, it drifts, it silently makes a call you'd have made differently — and you redo the work later. The cost isn't the typing. It's the rework.
 
-`spec` moves every decision to the **front**, where changing your mind is cheap, and writes them into one file your agent can't misread. You invoke it with `/spec <one-line idea>`, answer a short batch of multiple-choice questions, approve the result — and it builds straight through, pausing only when a call is genuinely yours to make.
+`spec` moves every decision to the **front**, where changing your mind is cheap, and writes them into one file your agent can follow. You invoke it with `/spec <one-line idea>`, answer a short batch of multiple-choice questions, approve the result — and it builds straight through, pausing only when a call is genuinely yours to make.
 
 ### Before / after
 
@@ -163,7 +163,7 @@ By default, `spec` writes the spec file and its questions in the **language of y
 output_language: en      # auto (default) | ja | en
 ```
 
-Code, commands, file paths, and slugs always stay in English regardless of this setting. The change takes effect on the next Claude Code session.
+Code, commands, file paths, and slugs are kept in English regardless of this setting. The change takes effect on the next Claude Code session.
 
 ### Usage
 
@@ -189,7 +189,7 @@ One fixed template keeps every spec comparable and complete:
 | 6 | Data & persistence | 13 | Implementation log & evidence |
 | 7 | Error handling & worst-case | | |
 
-§12 is two-layered on purpose: **your decisions (D)** are never re-asked; **AI placeholders (T)** stay visible so you keep a veto, even mid-implementation.
+§12 is two-layered on purpose: **your decisions (D)** are treated as settled; **AI placeholders (T)** stay visible so you keep a veto, even mid-implementation.
 
 ### Design principles
 
@@ -206,7 +206,7 @@ We don't publish efficiency percentages we haven't measured — that would be ex
 ### Requirements & honest notes
 
 - **Claude Code.** Relies on the slash-command and (optionally) sub-agent mechanisms. Check A is strongest with sub-agents available, and degrades gracefully to a self-audit table without them.
-- **Output language is configurable.** Set `output_language` in `skills/spec/config.yml` to `auto` (match your conversation — the default), `ja`, or `en`. The skill's own internal ruleset is authored in Japanese, but the specs and questions it produces follow your setting; code, commands, and slugs always stay English.
+- **Output language is configurable.** Set `output_language` in `skills/spec/config.yml` to `auto` (match your conversation — the default), `ja`, or `en`. The skill's own internal ruleset is authored in Japanese, but the specs and questions it produces follow your setting; code, commands, and slugs are kept in English.
 - Community project, **not affiliated with or endorsed by Anthropic**.
 
 ### License
@@ -219,9 +219,9 @@ We don't publish efficiency percentages we haven't measured — that would be ex
 
 ### 30秒で言うと
 
-曖昧な依頼を AI エージェントに渡すと、毎回おなじことが起きます。推測し、脱線し、あなたなら違うふうに決めたはずの判断を黙って下す —— そして半分やり直し。失う時間の正体は、タイピングではなく手戻りです。
+曖昧な依頼を AI エージェントに渡すと、毎回おなじことが起きます。推測し、脱線し、あなたなら違うふうに決めたはずの判断を黙って下す —— そして、あとで作り直しになります。失う時間の正体は、タイピングではなく手戻りです。
 
-`spec` はその判断を、考え直すコストが安い **最初** に動かし、AI が読み違えようのない1つのファイルに書き込みます。`/spec <一行の概要>` で呼び出し、短い選択式の質問に答え、結果を承認すれば —— あとは迷わず作り進み、本当にあなたにしか決められない時だけ、手を止めて確認します。
+`spec` はその判断を、考え直すコストが安い **最初** に動かし、AI が迷わず追える1つのファイルに書き込みます。`/spec <一行の概要>` で呼び出し、短い選択式の質問に答え、結果を承認すれば —— あとは迷わず作り進み、本当にあなたにしか決められない時だけ、手を止めて確認します。
 
 ### Before / After
 
@@ -334,7 +334,7 @@ cp -r spec-skill/skills/spec /path/to/your/project/.claude/skills/
 output_language: ja      # auto(既定)| ja | en
 ```
 
-コード・コマンド・パス・slug は、この設定に関わらず常に英語です。変更は次の Claude Code セッションから有効になります。
+コード・コマンド・パス・slug は、この設定に関わらず英語で扱います。変更は次の Claude Code セッションから有効になります。
 
 ### 使い方
 
@@ -377,7 +377,7 @@ output_language: ja      # auto(既定)| ja | en
 ### 動作要件・正直な補足
 
 - **Claude Code 専用。** スラッシュコマンドと(任意で)サブエージェント機構に依存します。関門Aはサブエージェントがあると最も強力で、無くても自己点検に穏やかに縮退します。
-- **出力言語は設定可能。** `skills/spec/config.yml` の `output_language` を `auto`(会話に合わせる・既定)・`ja`・`en` から選べます。skill 自身の内部ルールは日本語で書かれていますが、生成される仕様書と質問はこの設定に従います。コード・コマンド・slug は常に英語です。
+- **出力言語は設定可能。** `skills/spec/config.yml` の `output_language` を `auto`(会話に合わせる・既定)・`ja`・`en` から選べます。skill 自身の内部ルールは日本語で書かれていますが、生成される仕様書と質問はこの設定に従います。コード・コマンド・slug は英語で扱います。
 - コミュニティ製のプロジェクトで、**Anthropic 社とは無関係・非提携** です。
 
 ### ライセンス
